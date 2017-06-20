@@ -19,8 +19,13 @@ public class CharacterMove : MonoBehaviour
     public float gravity = -20.0f;
 
     float yVelocity = 0.0f;
+
     Vector3 latestVector;
+
     STATE state;
+
+    float dx;
+    float dz;
 
 	// Use this for initialization
 	void Start ()
@@ -28,26 +33,33 @@ public class CharacterMove : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         latestVector = new Vector3(0.0f, 0.0f, 0.0f);
         state = STATE.None;
+        dx = 0.0f;
+        dz = 0.0f;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z= Input.GetAxis("Vertical");
+        dx = Input.GetAxis("Horizontal");
+        dz = Input.GetAxis("Vertical");
 
-        Vector3 moveDirection = new Vector3(x, 0, z);
+        Vector3 moveDirection = new Vector3(dx, 0, dz);
        
         moveDirection = cameraTransform.TransformDirection(moveDirection);
 
-        if (moveDirection.x == 0.0f && moveDirection.x == 0.0f)
+        if(dz != 0.0f && dz != 0.0f)
         {
-            moveDirection = latestVector;
+            if (moveDirection.x == 0.0f && moveDirection.x == 0.0f)
+            {
+                moveDirection = latestVector;
+            }
+            else
+            {
+                latestVector = moveDirection;
+            }
         }
-        else
-        {
-            latestVector = moveDirection;
-        }
+
+
 
         moveDirection *= moveSpeed;
 
@@ -75,7 +87,6 @@ public class CharacterMove : MonoBehaviour
             }
 
         }
-
 
 
 
