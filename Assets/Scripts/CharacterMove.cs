@@ -47,6 +47,11 @@ public class CharacterMove : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if (GetComponent<PlayerState>().hp <= 0)
+        {
+            return;
+        }
+
         dx = Input.GetAxis("Horizontal");
         dz = Input.GetAxis("Vertical");
 

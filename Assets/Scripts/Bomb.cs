@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    public GameObject effect;
+    public GameObject effectGround;
+    public GameObject effectAir;
     private void OnCollisionEnter(Collision other)
     {
-        Debug.Log("sdfawetasdfasdfasdfasdfasdf"+other.gameObject.name);
+        if(other.gameObject.tag == "Ground")
+        {
+            MakeEffect(effectGround);
+        }
+        else
+        {
+            MakeEffect(effectAir);
+        }
+
+        Destroy(gameObject);
+    }
+
+    void MakeEffect(GameObject effect)
+    {
         GameObject eff = Instantiate(effect) as GameObject;
         eff.transform.position = transform.position;
-        Destroy(gameObject);
     }
 }

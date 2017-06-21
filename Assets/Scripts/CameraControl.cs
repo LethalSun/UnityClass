@@ -9,8 +9,14 @@ public class CameraControl : MonoBehaviour
     float rotationX;
     float rotationY;
 
+
     private void Update()
     {
+        if(GetComponentInParent<PlayerState>().hp <= 0)
+        {
+            return;
+        }
+
         float mouseMoveX = Input.GetAxis("Mouse X");
 
         float mouseMoveY = Input.GetAxis("Mouse Y");
