@@ -29,8 +29,7 @@ public class CameraControl : MonoBehaviour
         {
             rotationX = -90.0f; 
         }
-        
-        //Debug.Log("rotation x : " + rotationX);
+       
 
         transform.eulerAngles = new Vector3(-rotationX, rotationY, 0.0f);
     }

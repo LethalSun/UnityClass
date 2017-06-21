@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class CharacterMove : MonoBehaviour
 {
+    public static CharacterMove instance { get; private set; }
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     enum STATE
     {
         None = 0,
