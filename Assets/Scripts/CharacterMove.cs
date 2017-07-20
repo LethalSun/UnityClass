@@ -59,9 +59,9 @@ public class CharacterMove : MonoBehaviour
        
         moveDirection = cameraTransform.TransformDirection(moveDirection);
 
-        if(dz != 0.0f && dz != 0.0f)
+        if(dz != 0.0f || dx != 0.0f)
         {
-            if (moveDirection.x == 0.0f && moveDirection.x == 0.0f)
+            if (moveDirection.z == 0.0f || moveDirection.x == 0.0f)
             {
                 moveDirection = latestVector;
             }
